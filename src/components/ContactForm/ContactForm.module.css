@@ -28,6 +28,10 @@
     padding: 10px 10px;
 }
 
+.inputNumber:focus,
+.inputName:focus {
+    outline: 2px solid #e80dc0;
+}
 
 .inputForm:focus {
     outline: 1px solid #e4e9f0;
