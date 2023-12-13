@@ -9,8 +9,11 @@ const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
+    //  dodawanie nowego kontaktu
   const addContact = (e) => {
+       // Zapobiega domyślnej akcji formularza (przesłaniu danych)
     e.preventDefault();
+    //  pobieranie danych z formularza
     const form = e.target;
     const name = form.name.value.trim();
     const number = form.number.value.trim();

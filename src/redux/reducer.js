@@ -25,3 +25,5 @@ export const filterReducer = createReducer(filterInitialState, (builder) => {
       return action.payload; // Zakładam, że setFilter bezpośrednio ustawia nową wartość filtra
     });
 });
+
+// add.Case uzywane jako nowy styl w obiekcie builder
