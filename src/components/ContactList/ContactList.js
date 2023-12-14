@@ -1,23 +1,27 @@
 import { useSelector, useDispatch } from 'react-redux';
 import css from './ContactList.module.css';
-import { getContacts } from '../../redux/selectors';
+import { getContacts, getFilter } from '../../redux/selectors';
 import { deleteContact } from '../../redux/actions';
 
 const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-  //  bez selektora getContacts byłoby tak ((state) => state.contacts)
+  const filter = useSelector(getFilter); 
 
   const handleDeleteContact = (id) => {
     dispatch(deleteContact(id));
-    // usunięcie kontaktu z uzyciem parametru id
   };
+
+  // Filtrowanie kontaktów na podstawie wartości filtra
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <div className={css.contacts}>
-      <p>Find contact by name</p>
+      <p>Znajdź kontakt po nazwie</p>
       <ul className={css.contactsList}>
-        {contacts.map(({ id, name, number }) => (
+        {filteredContacts.map(({ id, name, number }) => (
           <li className={css.contactsItem} key={id}>
             <p className={css.contactsName}>{name}</p>
             <p className={css.contactsNumber}>{number}</p>
@@ -27,7 +31,7 @@ const ContactList = () => {
               }}
               className={css.contactsBtn}
             >
-              Delete
+              Usuń
             </button>
           </li>
         ))}

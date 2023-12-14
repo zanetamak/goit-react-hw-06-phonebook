@@ -21,9 +21,12 @@ export const contactsReducer = createReducer(contactsInitialState, (builder) => 
 
 export const filterReducer = createReducer(filterInitialState, (builder) => {
   builder
-    .addCase(setFilter, (state, action) => {
+    .addCase(setFilter, (_, action) => {
       return action.payload; // Zakładam, że setFilter bezpośrednio ustawia nową wartość filtra
     });
 });
 
 // add.Case uzywane jako nowy styl w obiekcie builder
+
+// '_' jest używane jako zmienna zastępcza dla pierwszego parametru (stanu). Jest to powszechna konwencja, gdy nie zamierzamy używać tego parametru wewnątrz funkcji. 
+// W ten sposób możemy zignorować go podczas implementacji, jednocześnie zachowując wymaganą kolejność parametrów.
